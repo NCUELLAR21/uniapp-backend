@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator
 from typing import Optional, List, Literal
 import re
-from datetime import time, date, datetime
+from datetime import time, date as date_type, datetime
 
 ALLOWED_ROLES = {"student", "teacher"}
 
@@ -224,14 +224,14 @@ class TeacherCourseMeetingResponse(BaseModel):
 class TeacherEvaluationCreate(BaseModel):
     eval_number: int
     title: str
-    date: date
+    date: date_type
     status: str = "planificada"
     notes: Optional[str] = None
 
 class TeacherEvaluationPatch(BaseModel):
     eval_number: Optional[int] = None
     title: Optional[str] = None
-    date: Optional[date] = None
+    date: date_type | None = None
     status: Optional[str] = None
     notes: Optional[str] = None
 
@@ -240,7 +240,7 @@ class TeacherEvaluationResponse(BaseModel):
     course_id: int
     eval_number: int
     title: str
-    date: date
+    date: date_type
     status: str
     notes: Optional[str] = None
     class Config:
@@ -249,7 +249,7 @@ class TeacherEvaluationResponse(BaseModel):
 class TeacherTaskCreate(BaseModel):
     task_type: str = "otro"
     title: str
-    due_date: Optional[date] = None
+    due_date: Optional[date_type] = None
     status: str = "pendiente"
     priority: str = "med"
     notes: Optional[str] = None
@@ -257,7 +257,7 @@ class TeacherTaskCreate(BaseModel):
 class TeacherTaskPatch(BaseModel):
     task_type: Optional[str] = None
     title: Optional[str] = None
-    due_date: Optional[date] = None
+    due_date: Optional[date_type] = None
     status: Optional[str] = None
     priority: Optional[str] = None
     notes: Optional[str] = None
