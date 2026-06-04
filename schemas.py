@@ -231,7 +231,7 @@ class TeacherEvaluationCreate(BaseModel):
 class TeacherEvaluationPatch(BaseModel):
     eval_number: Optional[int] = None
     title: Optional[str] = None
-    date: date | None = None
+    date: Optional[date] = None
     status: Optional[str] = None
     notes: Optional[str] = None
 
