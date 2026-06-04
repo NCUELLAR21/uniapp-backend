@@ -267,7 +267,7 @@ class TeacherTaskResponse(BaseModel):
     course_id: int
     task_type: str
     title: str
-    due_date: Optional[date] = None
+    due_date: Optional[date_type] = None
     status: str
     priority: str
     notes: Optional[str] = None
